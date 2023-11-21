@@ -14,15 +14,6 @@ function turnLeft () {
             break;
     }
 }
-input.onButtonPressed(Button.A, function () {
-    turnLeft()
-})
-function checkFood () {
-    if (headX == foodX && headY == foodY) {
-        snakeLength += 1;
-        spawnFood()
-    }
-}
 function resetGame () {
     headX = 0
     headY = 0
@@ -30,8 +21,27 @@ function resetGame () {
     foodY = 0
     snake = []
     snakeLength = 1
-    direction = 'r'
+    direction = "r"
     gameOver = false
+}
+function spawnFood () {
+    while (foodX == headX && foodY == headY) {
+        foodX = randint(0, 4)
+        foodY = randint(0, 4)
+    }
+}
+function playGameOverSound () {
+    sound = music.builtinPlayableSoundEffect(soundExpression.sad)
+    music.play(sound, music.PlaybackMode.UntilDone)
+}
+input.onButtonPressed(Button.A, function () {
+    turnLeft()
+})
+function checkFood () {
+    if (headX == foodX && headY == foodY) {
+        snakeLength += 1
+        spawnFood()
+    }
 }
 function moveSnake () {
     switch (direction) {
@@ -85,27 +95,24 @@ function checkCollision () {
 input.onButtonPressed(Button.B, function () {
     turnRight()
 })
+let sound: SoundExpression = null
 let gameOver = false
-let snakeLength = 1
 let snake: SnakePart[] = []
+let foodY = 0
+let foodX = 0
+let direction = ""
 let height = 0
 let width = 0
-let headX = 0
+let snakeLength = 0
 let headY = 0
-let foodX = 0
-let foodY = 0
+let headX = 0
+snakeLength = 1
 spawnFood()
 music.setBuiltInSpeakerEnabled(true)
-function spawnFood() {
-    while (foodX == headX && foodY == headY) {
-        foodX = randint(0, 4)
-        foodY = randint(0, 4)
-    }
-}
 width = 5
 height = 5
 led.plot(headX, headY)
-let direction = "r"
+direction = "r"
 interface SnakePart {
     x: number;
     y: number;
@@ -117,7 +124,7 @@ loops.everyInterval(500, function () {
         basic.clearScreen()
         basic.showIcon(IconNames.No)
         playGameOverSound()
-        basic.showString(snakeLength.toString())
+        basic.showString("" + (snakeLength.toString()))
         resetGame()
     } else {
         moveSnake()
@@ -135,7 +142,3 @@ loops.everyInterval(500, function () {
         checkFood()
     }
 })
-function playGameOverSound() {
-    let sound = music.builtinPlayableSoundEffect(soundExpression.sad)
-    music.play(sound, music.PlaybackMode.UntilDone)
-}
