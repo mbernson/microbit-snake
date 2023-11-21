@@ -25,9 +25,19 @@ function resetGame () {
     gameOver = false
 }
 function spawnFood () {
-    while (foodX == headX && foodY == headY) {
+    let loop = true
+    while (loop) {
         foodX = randint(0, 4)
         foodY = randint(0, 4)
+
+        loop = (foodX == headX && foodY == headY)
+        if (!loop) {
+            for (let part3 of snake) {
+                if (foodX == part3.x && foodY == part3.y && !loop) {
+                    loop = true
+                }
+            }
+        }
     }
 }
 function playGameOverSound () {
@@ -138,7 +148,9 @@ loops.everyInterval(500, function () {
         for (let part of snake) {
             led.plotBrightness(part.x, part.y, snakeBrightness)
         }
-        led.plotBrightness(foodX, foodY, foodBrightness)
         checkFood()
+        if (!(headX == foodX && headY == foodY)) {
+            led.plotBrightness(foodX, foodY, foodBrightness)
+        }
     }
 })
