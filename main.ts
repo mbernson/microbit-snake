@@ -25,15 +25,14 @@ function resetGame () {
     gameOver = false
 }
 function spawnFood () {
-    let loop = true
+    loop = true
     while (loop) {
         foodX = randint(0, 4)
         foodY = randint(0, 4)
-
-        loop = (foodX == headX && foodY == headY)
-        if (!loop) {
+        loop = foodX == headX && foodY == headY
+        if (!(loop)) {
             for (let part3 of snake) {
-                if (foodX == part3.x && foodY == part3.y && !loop) {
+                if (foodX == part3.x && foodY == part3.y && !(loop)) {
                     loop = true
                 }
             }
@@ -105,17 +104,27 @@ function checkCollision () {
 input.onButtonPressed(Button.B, function () {
     turnRight()
 })
+input.onGesture(Gesture.Shake, function () {
+    snakeLength += 0 - 3
+    if (snakeLength < 1) {
+        snakeLength = 1
+    }
+    while (snake.length > snakeLength) {
+        snake.shift()
+    }
+})
 let sound: SoundExpression = null
+let loop = false
 let gameOver = false
 let snake: SnakePart[] = []
 let foodY = 0
 let foodX = 0
-let direction = ""
 let height = 0
 let width = 0
-let snakeLength = 0
-let headY = 0
 let headX = 0
+let headY = 0
+let snakeLength = 0
+let direction = ""
 snakeLength = 1
 spawnFood()
 music.setBuiltInSpeakerEnabled(true)
