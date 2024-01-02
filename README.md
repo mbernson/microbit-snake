@@ -1,24 +1,27 @@
+_English below_
 
-> Open this page at [https://mbernson.github.io/microbit-snake/](https://mbernson.github.io/microbit-snake/)
+# Snake voor de micro:bit
 
-## Use as Extension
+Het spelletje snake ken je misschien van oude Nokia mobieltjes. :) Dit is snake, maar dan voor de [BBC micro:bit](https://microbit.org/).
 
-This repository can be added as an **extension** in MakeCode.
+In het spel bestuur je een lijn die over het scherm beweegt, dit is de slang. Het doel is om de slang te laten groeien door hem telkens naar het blokje eten te sturen.
+De slang wordt één blokje langer iedere keer dat hij iets eet. Maar de slang mag niet tegen zichzelf botsen, dan is het spel voorbij.
+Wanneer de slang door de rand van het scherm gaat, gaat hij door aan de tegenovergestelde kant van het scherm.
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/mbernson/microbit-snake** and import
+Je kunt de knoppen A en B gebruiken om de slang van richting te laten veranderen:
 
-## Edit this project
+* Bij het indrukken van A draait de richting van de slang een kwartslag tegen de klok in.
+* Bij het indrukken van B draait de richting van de slang een kwartslag me de klok mee. 
 
-To edit this repository in MakeCode.
+# Snake for the micro:bit
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/mbernson/microbit-snake** and click import
+You may know the game snake from old Nokia cellphones. :) This is snake, but for the [BBC micro:bit](https://microbit.org/).
 
-#### Metadata (used for search, rendering)
+In the game, you control a line that moves across the screen. This is the snake. The goal is to make the snake grow by sending it to the block of food each time.
+The snake grows one cube longer each time it eats something. But the snake must not bump into itself, then the game is over.
+When the snake passes through the edge of the screen, it continues on the opposite side of the screen.
 
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+You can use the A and B buttons to make the snake change direction:
+
+* When pressing A, the direction of the snake rotates counterclockwise a quarter turn.
+* When pressing B, the direction of the snake turns a quarter turn clockwise. 
